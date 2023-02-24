@@ -32,14 +32,14 @@ class LinkedList {
     if (!this.length) return;
 
     let temp = this.head;
-    let pre = this.head;
+    let prev = this.head;
 
     while (temp.next) {
-      pre = temp;
+      prev = temp;
       temp = temp.next;
     }
 
-    this.tail = pre;
+    this.tail = prev;
     this.tail.next = null;
 
     this.length--;
@@ -136,5 +136,24 @@ class LinkedList {
     this.length--;
 
     return temp;
+  }
+
+  reverse() {
+    let temp = this.head;
+
+    this.head = this.tail;
+    this.tail = temp;
+
+    let next = temp.next;
+    let prev = null;
+
+    for (let i = 0; i < this.length; i++) {
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp = next;
+    }
+
+    return this;
   }
 }
