@@ -67,5 +67,22 @@ class LinkedList {
     return this;
   }
 
+  shift() {
+    if (!this.length) return;
+
+    const temp = this.head;
+    this.head = this.head.next;
+    temp.next = null;
+
+    this.length--;
+
+    if (!this.length) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return temp;
+  }
+
   insert(index, value) {}
 }
