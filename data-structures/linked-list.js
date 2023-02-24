@@ -52,7 +52,20 @@ class LinkedList {
     return temp;
   }
 
-  unshift(value) {}
+  unshift(value) {
+    const newNode = new Node(value);
+
+    if (this.length) {
+      newNode.next = this.head;
+    } else {
+      this.tail = newNode;
+    }
+
+    this.head = newNode;
+    this.length++;
+
+    return this;
+  }
 
   insert(index, value) {}
 }
