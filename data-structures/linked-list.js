@@ -28,13 +28,31 @@ class LinkedList {
     return this;
   }
 
+  pop() {
+    if (!this.length) return;
+
+    let temp = this.head;
+    let pre = this.head;
+
+    while (temp.next) {
+      pre = temp;
+      temp = temp.next;
+    }
+
+    this.tail = pre;
+    this.tail.next = null;
+
+    this.length--;
+
+    if (!this.length) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return temp;
+  }
+
   unshift(value) {}
 
   insert(index, value) {}
 }
-
-const linkedList = new LinkedList(4);
-
-linkedList.push(3);
-
-console.log(linkedList);
