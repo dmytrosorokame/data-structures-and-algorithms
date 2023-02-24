@@ -9,11 +9,24 @@ class LinkedList {
   constructor(value) {
     const newNode = new Node(value);
     this.head = newNode;
-    this.tail = this.head;
+    this.tail = newNode;
     this.length = 1;
   }
 
-  push(value) {}
+  push(value) {
+    const newNode = new Node(value);
+
+    if (this.length) {
+      this.tail.next = newNode;
+    } else {
+      this.head = newNode;
+    }
+
+    this.tail = newNode;
+    this.length++;
+
+    return this;
+  }
 
   unshift(value) {}
 
@@ -21,3 +34,7 @@ class LinkedList {
 }
 
 const linkedList = new LinkedList(4);
+
+linkedList.push(3);
+
+console.log(linkedList);
