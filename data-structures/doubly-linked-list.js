@@ -103,4 +103,15 @@ class DoublyLinkedList {
 
     return temp;
   }
+
+  set(index, value) {
+    const temp = this.get(index);
+
+    if (temp) {
+      this.value = value;
+      return true;
+    }
+
+    return false;
+  }
 }
