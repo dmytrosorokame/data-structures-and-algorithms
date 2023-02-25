@@ -134,4 +134,22 @@ class DoublyLinkedList {
 
     return true;
   }
+
+  remove(index) {
+    if (index === 0) return this.shift(value);
+    if (index === this.length - 1) return this.pop(value);
+    if (index < 0 || index >= this.length) return;
+
+    const temp = this.get(index);
+
+    temp.next.prev = temp.prev;
+    temp.prev.next = temp.next;
+
+    temp.next = null;
+    temp.prev = null;
+
+    this.length--;
+
+    return temp;
+  }
 }
