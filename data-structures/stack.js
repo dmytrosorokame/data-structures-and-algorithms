@@ -24,4 +24,17 @@ class Stack {
 
     return this;
   }
+
+  pop() {
+    if (!this.length) return;
+
+    const temp = this.top;
+
+    this.top = this.top.next;
+    temp.next = null;
+
+    this.length--;
+
+    return temp;
+  }
 }
