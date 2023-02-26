@@ -71,14 +71,16 @@ class LinkedList {
     if (!this.length) return;
 
     const temp = this.head;
-    this.head = this.head.next;
-    temp.next = null;
+
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = this.head.next;
+      temp.next = null;
+    }
 
     this.length--;
-
-    if (!this.length) {
-      this.tail = null;
-    }
 
     return temp;
   }
