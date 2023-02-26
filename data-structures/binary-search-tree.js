@@ -59,4 +59,12 @@ class BinarySearchTree {
 
     return false;
   }
+
+  minValueNode(currentNode) {
+    while (currentNode.left) {
+      currentNode = currentNode.left;
+    }
+
+    return currentNode;
+  }
 }
