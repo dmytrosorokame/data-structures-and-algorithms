@@ -12,4 +12,19 @@ class Queue {
     this.last = newNode;
     this.length = 1;
   }
+
+  enqueue(value) {
+    const newNode = new Node(value);
+
+    if (this.length) {
+      this.last.next = newNode;
+    } else {
+      this.first = newNode;
+    }
+
+    this.last = newNode;
+    this.length++;
+
+    return this;
+  }
 }
