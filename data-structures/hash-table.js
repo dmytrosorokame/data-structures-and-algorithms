@@ -58,20 +58,20 @@ class HashTable {
 
     return allKeys;
   }
+
+  values() {
+    const allValues = [];
+
+    for (let i = 0; i < this.dataMap.length; i++) {
+      const cell = this.dataMap[i];
+
+      if (cell) {
+        for (let j = 0; j < cell.length; j++) {
+          allValues.push(cell[j][1]);
+        }
+      }
+    }
+
+    return allValues;
+  }
 }
-
-const hashTable = new HashTable();
-hashTable.set("myTest1", 98);
-hashTable.set("myTest2", 983);
-hashTable.set("myTest3", 981);
-hashTable.set("myTest4", 985);
-hashTable.set("myTest5", 989);
-hashTable.set("myTest6", 93);
-hashTable.set("myTest7", 18);
-hashTable.set("myTest8", 68);
-
-console.log(JSON.stringify(hashTable));
-
-console.log(hashTable.get("myTest1"));
-
-console.log(hashTable.keys());
