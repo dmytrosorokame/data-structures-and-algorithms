@@ -12,4 +12,28 @@ class HashTable {
 
     return hash;
   }
+
+  set(key, value) {
+    const index = this._hash(key);
+
+    if (!this.dataMap[index]) {
+      this.dataMap[index] = [];
+    }
+
+    this.dataMap[index].push([key, value]);
+
+    return this;
+  }
 }
+
+const hashTable = new HashTable();
+hashTable.set("myTest1", 98);
+hashTable.set("myTest2", 98);
+hashTable.set("myTest3", 98);
+hashTable.set("myTest4", 98);
+hashTable.set("myTest5", 98);
+hashTable.set("myTest6", 98);
+hashTable.set("myTest7", 98);
+hashTable.set("myTest8", 98);
+
+console.log(JSON.stringify(hashTable));
