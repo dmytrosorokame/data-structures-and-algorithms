@@ -1,8 +1,6 @@
 class Heap {
   #heap = [];
 
-  constructor() {}
-
   getHeap() {
     return [...this.#heap];
   }
@@ -24,5 +22,20 @@ class Heap {
       this.#heap[index2],
       this.#heap[index1],
     ];
+  }
+
+  insert(value) {
+    this.#heap.push(value);
+
+    let current = this.#heap.length - 1;
+
+    while (
+      current > 0 &&
+      this.#heap[current] > this.#heap[this.#parent(current)]
+    ) {
+      this.#swap(current, this.#parent(current));
+
+      current = this.#parent(current);
+    }
   }
 }
