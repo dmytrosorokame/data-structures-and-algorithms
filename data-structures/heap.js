@@ -38,4 +38,33 @@ class Heap {
       current = this.#parent(current);
     }
   }
+
+  remove() {
+    if (this.#heap.length === 0) return null;
+
+    if (this.#heap.length === 1) return this.#heap.pop();
+
+    const maxValue = this.#heap[0];
+
+    this.#heap[0] = this.#heap.pop();
+    this.#sinkDown(0);
+
+    return maxValue;
+  }
 }
+
+const heap = new Heap();
+heap.insert(99);
+heap.insert(72);
+heap.insert(61);
+heap.insert(58);
+
+console.log(heap.getHeap());
+
+heap.insert(100);
+
+console.log(heap.getHeap());
+
+heap.insert(75);
+
+console.log(heap.getHeap());
