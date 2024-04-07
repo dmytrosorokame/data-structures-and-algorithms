@@ -72,6 +72,23 @@ class BinarySearchTree {
     }
   }
 
+  #rInsert(value, currentNode = this.root) {
+    if (currentNode === null) return new Node(value);
+
+    if (value < currentNode.value) {
+      currentNode.left = this.#rInsert(value, currentNode.left);
+    } else if (value > currentNode.value) {
+      currentNode.right = this.#rInsert(value, currentNode.right);
+    }
+
+    return currentNode;
+  }
+
+  rInsert(value) {
+    if (this.root === null) this.root = new Node(value);
+    this.#rInsert(value);
+  }
+
   minValueNode(currentNode) {
     while (currentNode.left) {
       currentNode = currentNode.left;
@@ -80,3 +97,14 @@ class BinarySearchTree {
     return currentNode;
   }
 }
+
+const newTree = new BinarySearchTree();
+
+newTree.rInsert(2);
+newTree.rInsert(1);
+newTree.rInsert(3);
+
+console.log(newTree.root);
+
+console.log(newTree.rContains(3));
+console.log(newTree.rContains(5));
