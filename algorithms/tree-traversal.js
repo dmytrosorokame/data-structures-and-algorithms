@@ -101,6 +101,20 @@ class BinarySearchTree {
 
     return results;
   }
+
+  DFSPostOrder() {
+    const results = [];
+
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      if (node.right) traverse(node.right);
+      results.push(node.value);
+    }
+
+    traverse(this.root);
+
+    return results;
+  }
 }
 
 const BST = new BinarySearchTree();
@@ -120,3 +134,5 @@ console.log(JSON.stringify(BST));
 console.log(BST.BFS());
 
 console.log(BST.DFSPreOrder());
+
+console.log(BST.DFSPostOrder());
